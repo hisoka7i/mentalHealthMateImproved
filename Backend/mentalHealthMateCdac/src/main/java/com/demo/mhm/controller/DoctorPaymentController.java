@@ -12,7 +12,7 @@ import com.demo.mhm.service.DocPaymentServiceI;
 
 @RequestMapping("/DocPayment")
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 public class DoctorPaymentController {
 	
 

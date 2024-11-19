@@ -15,7 +15,7 @@ import com.demo.mhm.service.SlotServiceI;
 
 @RequestMapping("/FreeSlots")
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins="http://localhost:3000")
 public class FreeSlotController {
 	
 	@Autowired

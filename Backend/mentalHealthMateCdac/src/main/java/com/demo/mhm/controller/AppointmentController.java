@@ -18,7 +18,7 @@ import com.demo.mhm.service.AppointmentServiceI;
 
 @RestController
 @RequestMapping("/appointments")
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 public class AppointmentController {
 	@Autowired
     private  AppointmentServiceI appointmentService;

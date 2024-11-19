@@ -13,7 +13,7 @@ import com.demo.mhm.model.SiteGeneratedReport;
 import com.demo.mhm.service.QuestionServiceI;
 
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins="http://localhost:3000")
 public class QuestionsController {
 	@Autowired
 	QuestionServiceI qsi;

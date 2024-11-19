@@ -6,6 +6,7 @@ import {AiOutlineUser} from 'react-icons/ai';
 import NavBar from '../components/NavBar';
 import {URL} from '../config'
 import axios from 'axios';
+import { Alert } from 'react-bootstrap';
 
 // import loginpic from "../images/login.svg"
 
@@ -25,23 +26,32 @@ const Login = () =>{
            "password":password
         }
         //console.log(body);
-        axios.post(`${URL}/user/login`,body).then((response)=>{
-             console.log("sucessfull login");
-             const result = response.data;
-             const status = response.status;
-             if(status==200){
-                 console.log(result)
-
-                 sessionStorage['id']=result.id;
-                 sessionStorage['uname']=result.username;
-                 sessionStorage['name']=response.name;
-                 sessionStorage['email']=result.email;
-                 sessionStorage['loginStatus']=2;
-                 navigate('/')
-             }
-        }).catch((error)=>{
-            console.error(error);
+        axios.post(`${URL}/user/login`, body)
+        .then((response) => {
+            console.log("Successful login");
+            const result = response.data; // Backend response body
+            const status = response.status;
+    
+            if (status === 200) {
+                // alert(result + " Login successful ")
+                console.log(result)
+                // Store data in sessionStorage
+                sessionStorage['id'] = result.id;
+                sessionStorage['uname'] = result.userName;
+                sessionStorage['name'] = result.name; // Fixed
+                sessionStorage['email'] = result.email;
+                sessionStorage['loginStatus'] = 2;
+                sessionStorage['token'] = result.jwtToken; // Assuming token is sent
+    
+                // alert('Login successful!');
+                navigate('/') // Uncomment if navigation is required
+            }
         })
+        .catch((error) => {
+            console.error(error);
+            alert('Login failed!');
+        });
+    
     }
     return (
         <>

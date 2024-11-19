@@ -12,7 +12,7 @@ import com.demo.mhm.service.SiteGenReportI;
 
 @RequestMapping("/SiteReport")
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 public class SiteGeneratedReportController {
 
 @Autowired

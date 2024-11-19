@@ -1,11 +1,21 @@
 package com.demo.mhm.dto;
 
 public class SentUserDetailsDTO {
+    private int id;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String jwtToken;
     private String userName;
     private Integer age;
     private String phoneNumber;
     private Character gender;
+    private String name;
+    private String email;
 
     public SentUserDetailsDTO(){
         
@@ -56,5 +66,21 @@ public class SentUserDetailsDTO {
 
     public void setGender(Character gender) {
         this.gender = gender;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

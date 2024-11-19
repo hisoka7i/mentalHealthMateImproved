@@ -13,27 +13,56 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.demo.mhm.filters.JWTRequestFilters;
 import com.demo.mhm.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
     @Autowired
-    PasswordEncoder encoder;
+    private PasswordEncoder encoder;
     @Autowired
-    CustomUserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
+
+    @Autowired
+    private JWTRequestFilters filter;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.
+        return http
+        .cors(Customizer.withDefaults()).
         csrf(customise -> customise.disable())
         .authorizeHttpRequests(request -> request
-        		.requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/user/login")).permitAll()
-                .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/user/*")).hasRole("USER")
+        		.requestMatchers(
+                AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/user/login"),
+                AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/doctor/register"),
+                AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/doctor/login")
+                ,AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/user/register")
+                ).permitAll()
         		.anyRequest().authenticated())
+        .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
         .httpBasic(Customizer.withDefaults())
-        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build(); 
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).
+        build(); 
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**") // Apply to all endpoints
+                        .allowedOrigins("http://localhost:3000") // Update with your frontend's domain
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .exposedHeaders("Authorization") // Allow frontend to access custom headers
+                        .allowCredentials(true); // Allow cookies if needed
+            }
+        };
     }
 
      @Bean

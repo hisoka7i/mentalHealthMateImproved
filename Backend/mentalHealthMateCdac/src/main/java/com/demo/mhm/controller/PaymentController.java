@@ -11,7 +11,7 @@ import com.demo.mhm.service.PaymentServiceI;
 
 @RequestMapping("/Payment")
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 
 public class PaymentController {
 

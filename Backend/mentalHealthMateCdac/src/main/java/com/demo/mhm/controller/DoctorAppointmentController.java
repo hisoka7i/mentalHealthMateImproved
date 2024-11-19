@@ -13,7 +13,7 @@ import com.demo.mhm.service.DocAppointmentServiceI;
 
 @RequestMapping("/DocAppointment")
 @RestController
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 public class DoctorAppointmentController {
 	
 	@Autowired
