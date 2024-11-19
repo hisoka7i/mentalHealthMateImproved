@@ -23,7 +23,6 @@ public class QuestionsController {
 	}
 	@GetMapping("/question/sitereport/{id}")
 	public ResponseEntity<?> getSiteGeneratedReport(@PathVariable("id") int id) {
-		
 		//return ResponseUtil.success(qsi.generateReport());
 		return ResponseEntity.ok(qsi.generateReport(id));
 	}

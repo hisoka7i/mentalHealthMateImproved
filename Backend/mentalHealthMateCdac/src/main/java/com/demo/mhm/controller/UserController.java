@@ -116,16 +116,21 @@ public class UserController {
 	
 	
 	@PatchMapping("/updateAllergies/{id}/{allergy}")
-	public ResponseEntity<?> updateAllergyById(@PathVariable("id") int id,@PathVariable("allergy") String allergy,HttpStatus status){
-		if(serviceI.updateAllergy(id,allergy)) {
-			return ResponseEntity.ok(status);
+	public ResponseEntity<?> updateAllergyById(@PathVariable("id") int id,@PathVariable("allergy") String allergy,HttpStatus status
+	,Authentication authentication){
+		if(authentication.isAuthenticated()){
+			if(serviceI.updateAllergy(id,allergy)) {
+				return ResponseEntity.ok(status);
+			}
 		}
 		return ResponseEntity.status(status).build();
 	}
 	
 	@PostMapping("/addMedicalHistory")
-	public ResponseEntity<?> addMedicalHistory(@RequestBody MedicalHistoryDTO medicalHistoryDTO,HttpStatus status){
-		boolean out = serviceI.addMedicalHistory(medicalHistoryDTO);
+	public ResponseEntity<?> addMedicalHistory(@RequestBody MedicalHistoryDTO medicalHistoryDTO,HttpStatus status, Authentication authentication){
+		if(authentication.isAuthenticated()){
+			boolean out = serviceI.addMedicalHistory(medicalHistoryDTO);
+		}
 		return ResponseEntity.ok(status);
 	}
 
