@@ -60,7 +60,7 @@ public class DocAppointserviceImpl implements DocAppointmentServiceI{
 		Users u = ur.getByName(name);
 		MedicalHistory mh = mhr.getByUserId(u.getId());
 		SiteGeneratedReport sgr = sgrr.getByUserId(u.getId());
-		System.out.println(sgr);
+		// System.out.println(sgr);
 		List<Diagnosis> lDiagnosis = dr.findAllByMedicalHistoryId(mh.getMedical_id());
 		for(Diagnosis d: lDiagnosis) {
 		List<Medications> medications = mr.findAllByDiagnosisName(d.getDiagnosis_id());
@@ -82,7 +82,7 @@ public class DocAppointserviceImpl implements DocAppointmentServiceI{
 		MedicalHistory mh = mhr.getByUserId(u.getId());
 		Diagnosis d= new Diagnosis(0, diagnosis, new Date(), mh);
 		Medications m = new Medications(0, medication,d);
-		System.out.println(mh);
+		// System.out.println(mh);
 		dr.save(d);
 		mr.save(m);
 		return true;

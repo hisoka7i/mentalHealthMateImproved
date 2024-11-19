@@ -33,7 +33,7 @@ public class DoctorController {
 	public ResponseEntity<?> addDoctor(@RequestBody Doctor doctor)
 	{
 		 Doctor uData =serviceI.addDoctor(doctor);
-		System.out.println(uData);
+		// System.out.println(uData);
 		 if(uData!=null)
 		 return ResponseEntity.ok(uData);
 		 

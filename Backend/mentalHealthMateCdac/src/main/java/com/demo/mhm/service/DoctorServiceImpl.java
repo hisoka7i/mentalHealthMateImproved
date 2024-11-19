@@ -50,7 +50,7 @@ public class DoctorServiceImpl implements DoctorServiceI{
 	public Doctor findUserByUserNameAndPassword(DoctorCredentialDTO dc) {
 
 			Doctor d=dd.FindByDuserName(dc.getUsername());
-			System.out.println(d);
+			// System.out.println(d);
 			String rawPassword = dc.getPassword();
 			if(rawPassword.equals(d.getPassword())){
 				return d;

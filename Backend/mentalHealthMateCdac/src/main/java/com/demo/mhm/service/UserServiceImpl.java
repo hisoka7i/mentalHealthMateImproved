@@ -60,18 +60,18 @@ public class UserServiceImpl implements UserServiceI{
 	public boolean addMedicalHistory(MedicalHistoryDTO mdh) {
 		// TODO Auto-generated method stub
 		List<DiagnosisDTO> dList=mdh.getDiagnosisDTO();
-		System.out.println(dList);
+		// System.out.println(dList);
 		List<MedicationDTO> medList = mdh.getMedicationDTO();
 		Optional<Users> d = ur.findById(mdh.getUserId());
 		Users u = d.get();
 		MedicalHistory mh = new MedicalHistory(0,mdh.getFamilyHistory(),mdh.getAllergies(),new Date(),u);
-		System.out.println(mh);
+		// System.out.println(mh);
 		mhr.save(mh);
 		
 		int i=0;
 		for(DiagnosisDTO diagDTO: dList) {
 			Diagnosis diagnosis = new Diagnosis(0,diagDTO.getDiagnosisName(),new Date(),mh);
-			System.out.println(diagnosis);
+			// System.out.println(diagnosis);
 			MedicationDTO medDTO = medList.get(i);
 			Medications medication = new Medications(0,medDTO.getMedications(),diagnosis);
 			i++;
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserServiceI{
 	@Override
 	public boolean updateAllergy(int id, String allergy) {
 		MedicalHistory mh = mhr.getByUserId(id);
-		System.out.println(mh);
+		// System.out.println(mh);
 		mh.setAllergies(allergy);
 		if(mhr.save(mh)!=null) {
 			return true;

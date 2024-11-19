@@ -30,6 +30,7 @@ public class WebSecurityConfig {
         csrf(customise -> customise.disable())
         .authorizeHttpRequests(request -> request
         		.requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/user/login")).permitAll()
+                .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/user/*")).hasRole("USER")
         		.anyRequest().authenticated())
         .httpBasic(Customizer.withDefaults())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build(); 
