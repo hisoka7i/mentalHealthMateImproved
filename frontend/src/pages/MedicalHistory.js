@@ -43,7 +43,8 @@ const MedicalHistory = ()=>{
 
     function handler5(){
         var id = sessionStorage['id']
-        console.log(id);
+        const token = sessionStorage['token']
+        // console.log(id);
         const body={
             "userId":id,
            "allergies":allergy,
@@ -51,8 +52,14 @@ const MedicalHistory = ()=>{
            "diagnosisDTO": medicalHistory.diagnosis.map(diagnosis => ({ "diagnosisName": diagnosis })),
            "medicationDTO": medicalHistory.medication.map(medication => ({ "medications": medication }))
         }
-        console.log(body);
-        axios.post(`${URL}/user/addMedicalHistory`,body).then((response)=>{
+        console.log(token);
+        axios.post(`${URL}/user/addMedicalHistory`,body,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`, // Replace 'jwtToken' with the key where you stored the token
+                },
+            }
+        ).then((response)=>{
              const result = response.data;
              const status = response.status;
              if(status==200){

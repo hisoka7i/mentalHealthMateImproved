@@ -76,6 +76,14 @@ public MedicalHistory(int medical_id, String familyHistory, String allergies, Da
 	this.user3 = user3;
 }
 
+public MedicalHistory( String familyHistory, String allergies, Date date, Users user3) {
+	super();
+	this.familyHistory = familyHistory;
+	Allergies = allergies;
+	this.date = date;
+	this.user3 = user3;
+}
+
 @Override
 public String toString() {
 	return "MedicalHistory [Medical_id=" + medicalId + ", familyHistory=" + familyHistory + ", Allergies=" + Allergies

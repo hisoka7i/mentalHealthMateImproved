@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserServiceI{
 		List<MedicationDTO> medList = mdh.getMedicationDTO();
 		Optional<Users> d = ur.findById(mdh.getUserId());
 		Users u = d.get();
-		MedicalHistory mh = new MedicalHistory(0,mdh.getFamilyHistory(),mdh.getAllergies(),new Date(),u);
+		MedicalHistory mh = new MedicalHistory(mdh.getFamilyHistory(),mdh.getAllergies(),new Date(),u);
 		// System.out.println(mh);
 		mhr.save(mh);
 		
