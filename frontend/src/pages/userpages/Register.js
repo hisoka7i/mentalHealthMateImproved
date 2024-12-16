@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import './styles/Register.css';
+import '../styles/Register.css';
 import {AiOutlineUsergroupAdd} from 'react-icons/ai';
-import NavBar from '../components/NavBar';
+import NavBar from '../../components/NavBar';
 const Register = () =>{
     return (
         <>

@@ -1,7 +1,7 @@
-import './styles/Home.css';
-import NavBar from '../components/NavBar';
+import '../styles/Home.css';
+import NavBar from '../../components/NavBar';
 import axios from 'axios';
-import { URL } from '../config';
+import { URL } from '../../config';
 import {RiMapPinLine,RiMapPin3Line} from 'react-icons/ri';
 import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from 'react';

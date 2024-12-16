@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import './styles/Register.css';
+import '../styles/Register.css';
 import {AiOutlineUsergroupAdd} from 'react-icons/ai';
 import axios from 'axios';
-import {URL} from '../config'
+import {URL} from '../../config'
 import {useNavigate} from 'react-router';
-import NavBar from '../components/NavBar';
+import NavBar from '../../components/NavBar';
 
 const DoctorRegister = () =>{
     const navigate = useNavigate();

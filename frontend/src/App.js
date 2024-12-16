@@ -3,22 +3,22 @@ import {BrowserRouter, Route, Routes, Link} from 'react-router-dom'
 import './App.css';
 import ErrorPage from './pages/ErrorPage';
 
-import Login from './pages/Login';
-import Register from "./pages/Register";
+import Login from './pages/userpages/Login';
+import Register from "./pages//userpages/Register";
 import MedicalHistory from "./pages/MedicalHistory";
-import Choice from "./pages/Choice";
-import DoctorHome from "./pages/DoctorHome";
-import DoctorLogin from "./pages/DoctorLogin"
+import Choice from "./pages/userpages/Choice";
+import DoctorHome from "./pages/doctorpages/DoctorHome";
+import DoctorLogin from "./pages/doctorpages/DoctorLogin"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DoctorRegistration from './pages/DoctorRegistration'
+import DoctorRegistration from './pages/doctorpages/DoctorRegistration'
 import PaymentHistory from "./pages/PaymentHistory";
 import FreeSlot from "./pages/FreeSlot";
-import DoctorAppointment from "./pages/DoctorAppointment";
-import PatientAppointment from "./pages/PatientAppointment";
+import DoctorAppointment from "./pages/doctorpages/DoctorAppointment";
+import PatientAppointment from "./pages/userpages/PatientAppointment";
 import MedicalHistoryCard from "./pages/MedicalHistoryCard"
-import BookAppointment from "./pages/BookAppointment";
-import UserHome from "./pages/UserHome"
-import Question from "./pages/Question";
+import BookAppointment from "./pages/doctorpages/BookAppointment";
+import UserHome from "./pages/userpages/UserHome"
+import Question from "./pages/userpages/Question";
 import SiteReport from "./pages/SiteReport";
 
 

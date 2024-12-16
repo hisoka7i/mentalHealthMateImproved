@@ -2,9 +2,9 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import {useNavigate} from 'react-router';
-import './styles/Home.css';
+import '../styles/Home.css';
 import {LiaMedkitSolid} from 'react-icons/lia';
-import NavBar from '../components/NavBar';
+import NavBar from '../../components/NavBar';
 
 let navigate;
 const paymentHandler=()=>{

@@ -2,13 +2,13 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { useNavigate } from 'react-router';
-import './styles/Home.css';
+import '../styles/Home.css';
 import { BsBookmarkHeart } from 'react-icons/bs';
 import { AiOutlineMedicineBox } from 'react-icons/ai';
 import { TbUserQuestion } from 'react-icons/tb'
 import { BiHomeHeart } from 'react-icons/bi'
-import NavBar from '../components/NavBar';
-import { URL } from '../config';
+import NavBar from '../../components/NavBar';
+import { URL } from '../../config';
 import axios from 'axios';
 
 const UserHome = () => {

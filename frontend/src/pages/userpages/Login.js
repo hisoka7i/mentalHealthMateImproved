@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import './styles/Login.css';
+import '../styles/Login.css';
 import {useNavigate} from 'react-router';
 import {AiOutlineUser} from 'react-icons/ai';
-import NavBar from '../components/NavBar';
-import {URL} from '../config'
+import NavBar from '../../components/NavBar';
+import {URL} from '../../config'
 import axios from 'axios';
 import { Alert } from 'react-bootstrap';
 

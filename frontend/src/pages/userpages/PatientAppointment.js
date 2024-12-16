@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { URL } from '../config';
-import NavBar from '../components/NavBar';
+import { URL } from '../../config';
+import NavBar from '../../components/NavBar';
 import { PieChart, Pie } from 'recharts';
 import {AiOutlineUser} from 'react-icons/ai';
 import {useNavigate} from 'react-router';

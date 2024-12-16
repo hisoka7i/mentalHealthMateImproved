@@ -2,11 +2,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import {useNavigate} from 'react-router';
-import './styles/Home.css';
+import '../styles/Home.css';
 import {BsFillJournalBookmarkFill} from 'react-icons/bs';
-import NavBar from '../components/NavBar';
+import NavBar from '../../components/NavBar';
 import axios from 'axios';
-import { URL } from '../config';
+import { URL } from '../../config';
 
 const BookAppointment=()=>{
   const navigate = useNavigate();

@@ -2,11 +2,11 @@ import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import {useNavigate} from 'react-router';
-import './styles/Home.css';
-import NavBar from '../components/NavBar';
+import '../styles/Home.css';
+import NavBar from '../../components/NavBar';
 import axios from 'axios';
-import { URL } from '../config';
-import Choice from './Choice';
+import { URL } from '../../config';
+// import Choice from '../Choice';
 const Question = () => {
     const navigate = useNavigate();
     var anxity = "";
