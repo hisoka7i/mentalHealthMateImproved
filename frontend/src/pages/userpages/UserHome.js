@@ -10,6 +10,7 @@ import { BiHomeHeart } from 'react-icons/bi'
 import NavBar from '../../components/NavBar';
 import { URL } from '../../config';
 import axios from 'axios';
+import ChatBox from '../AiAssistance/chatBox';
 
 const UserHome = () => {
     const navigate = useNavigate();
@@ -105,6 +106,7 @@ const UserHome = () => {
                     </div>
                 </div>
             </div>
+            <ChatBox />
         </>
     )
 }
