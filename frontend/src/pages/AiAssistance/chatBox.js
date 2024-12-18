@@ -42,6 +42,7 @@ const ChatBox = ({
       })
       .then((response) => {
         if (response.status == 200) {
+          setMessages((prevMessages) => [...prevMessages, { sender: "ai", text: response.data }]);
           // alert(response.data); we are getting the response
         }
       });
