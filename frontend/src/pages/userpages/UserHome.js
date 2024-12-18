@@ -106,7 +106,7 @@ const UserHome = () => {
                     </div>
                 </div>
             </div>
-            <ChatBox />
+            <ChatBox userName={name} medicalHistory={"Nothing"}/>
         </>
     )
 }

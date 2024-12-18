@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { PiChatDotsLight } from "react-icons/pi";
 import { RxCrossCircled } from "react-icons/rx";
-import '../styles/ChatBox.css';
+import "../styles/ChatBox.css";
+import axios from "axios";
+import { URL } from "../../config";
 
-const ChatBox = ({ userName, medicalHistory, themeColor = "#4477CE", sendButtonText = "Send" }) => {
+const ChatBox = ({
+  userName,
+  medicalHistory,
+  themeColor = "#4477CE",
+  sendButtonText = "Send",
+}) => {
   const [isOpen, setIsOpen] = useState(false); // Check visibility
   const [messages, setMessages] = useState([]); // Temporary chat data
   const [input, setInput] = useState(""); // Input value for the chatbox
@@ -17,19 +24,37 @@ const ChatBox = ({ userName, medicalHistory, themeColor = "#4477CE", sendButtonT
   const sendMessage = () => {
     if (input.trim() === "") return;
 
+    const token = sessionStorage["token"];
+
     // Add user's message to the chat
     setMessages([...messages, { sender: "user", text: input }]);
     setInput(""); // Clear input field
 
-    // Simulate AI response (use medical history here)
-    setTimeout(() => {
-      const aiResponse =
-        input.toLowerCase().includes("history") && medicalHistory.length
-          ? `Your medical history: ${medicalHistory.join(", ")}`
-          : `Hello ${userName}, how can I assist you?`;
+    const body = {
+      "question": input
+    };
+    //here we need to make the axios call.
+    const result = axios
+      .post(`${URL}/chatbot/ask`, body, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Replace 'jwtToken' with the key where you stored the token
+        },
+      })
+      .then((response) => {
+        if (response.status == 200) {
+          // alert(response.data); we are getting the response
+        }
+      });
 
-      setMessages((prevMessages) => [...prevMessages, { sender: "ai", text: aiResponse }]);
-    }, 1000);
+    // Simulate AI response (use medical history here)
+    // setTimeout(() => {
+    //   const aiResponse =
+    //     input.toLowerCase().includes("history") && medicalHistory.length
+    //       ? `Your medical history: ${medicalHistory.join(", ")}`
+    //       : `Hello ${userName}, how can I assist you?`;
+
+    //   setMessages((prevMessages) => [...prevMessages, { sender: "ai", text: aiResponse }]);
+    // }, 1000);
   };
 
   return (
@@ -43,7 +68,10 @@ const ChatBox = ({ userName, medicalHistory, themeColor = "#4477CE", sendButtonT
       {isOpen && (
         <div className="chatBox">
           {/* Header */}
-          <div className="chatBox-header" style={{ backgroundColor: themeColor }}>
+          <div
+            className="chatBox-header"
+            style={{ backgroundColor: themeColor }}
+          >
             <h3>Any questions? {userName}</h3>
             <button onClick={toggleChat}>
               <RxCrossCircled />
@@ -55,7 +83,9 @@ const ChatBox = ({ userName, medicalHistory, themeColor = "#4477CE", sendButtonT
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className={`chat-message ${msg.sender === "user" ? "user-message" : "ai-message"}`}
+                className={`chat-message ${
+                  msg.sender === "user" ? "user-message" : "ai-message"
+                }`}
               >
                 {msg.text}
               </div>
@@ -71,7 +101,10 @@ const ChatBox = ({ userName, medicalHistory, themeColor = "#4477CE", sendButtonT
               onChange={(event) => setInput(event.target.value)}
               onKeyDown={(event) => event.key === "Enter" && sendMessage()}
             />
-            <button onClick={sendMessage} style={{ backgroundColor: themeColor }}>
+            <button
+              onClick={sendMessage}
+              style={{ backgroundColor: themeColor }}
+            >
               {sendButtonText}
             </button>
           </div>
