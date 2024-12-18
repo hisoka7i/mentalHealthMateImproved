@@ -24,6 +24,7 @@ public class AIController {
             return ResponseEntity.badRequest().body("Question is required.");
         }
         String answer = aiService.getAnswer(question);
+        System.out.println(answer + " << -- This is the response.");
         return ResponseEntity.ok(answer);
     }
 }

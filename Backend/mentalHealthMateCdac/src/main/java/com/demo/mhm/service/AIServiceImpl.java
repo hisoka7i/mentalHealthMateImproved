@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class AIServiceImpl implements AIService {
 
+    //https://api.openai.com/v1/chat/completions
+    //https://api.openai.com/v1/chat/completions
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
-    private static final String API_KEY = "your-openai-api-key";
+    private static final String API_KEY = "sk-progA";
 
     @Override
     public String getAnswer(String question) {
@@ -22,7 +24,7 @@ public class AIServiceImpl implements AIService {
 
             // Prepare request body
             String json = String.format(
-                "{\"model\": \"gpt-4\", \"messages\": [{\"role\": \"user\", \"content\": \"%s\"}]}",
+                "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"%s\"}]}",
                 question
             );
 
@@ -33,6 +35,7 @@ public class AIServiceImpl implements AIService {
 
             // Execute API call
             try (CloseableHttpResponse response = client.execute(httpPost)) {
+                System.out.println(response.getCode() + " < This is the response code.");
                 if (response.getCode() == 200) {
                     String responseBody = EntityUtils.toString(response.getEntity());
                     // Parse the JSON response to get the AI's reply
