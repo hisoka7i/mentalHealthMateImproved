@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import '../styles/Home.css';
 import { BsBookmarkHeart } from 'react-icons/bs';
@@ -11,12 +11,16 @@ import NavBar from '../../components/NavBar';
 import { URL } from '../../config';
 import axios from 'axios';
 import ChatBox from '../AiAssistance/chatBox';
+import { useSelector } from 'react-redux';
+import { Alert } from 'react-bootstrap';
 
 const UserHome = () => {
     const navigate = useNavigate();
     var allergy = ""
     const id = sessionStorage['id']
-    const token = sessionStorage['token']
+    // const token = sessionStorage['token']
+    const user = useSelector(state => state.user);
+    const token = user.token;
     function updateAllergy() {
         console.log(id)
         axios.patch(`${URL}/user/updateAllergies/${id}/${allergy}`,
@@ -43,6 +47,7 @@ const UserHome = () => {
     }
 
     const name = sessionStorage['uname']
+
     return (
         <>
             <NavBar />

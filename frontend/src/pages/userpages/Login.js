@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/Login.css';
 import {useNavigate} from 'react-router';
 import {AiOutlineUser} from 'react-icons/ai';
@@ -7,18 +7,28 @@ import NavBar from '../../components/NavBar';
 import {URL} from '../../config'
 import axios from 'axios';
 import { Alert } from 'react-bootstrap';
+import { createSlice, useDispatch, useSelector } from 'react-redux';
+import { setUser } from '../store/Actions';
 
 // import loginpic from "../images/login.svg"
 
 const Login = () =>{
     const navigate = useNavigate();
-    var username="";
-    var password="";
+    // var username="";
+    // var password="";
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const user = useSelector(state => state.user); 
+    const dispatch = useDispatch();
+    
     function handler1(e){
-        username=e.target.value;
+        // username=e.target.value;
+        setUsername(e.target.value);
     }
     function handler2(e){
-        password=e.target.value;
+        // password=e.target.value;
+        setPassword(e.target.value);
     }
     function loginFunction(){
         const body={
@@ -33,7 +43,22 @@ const Login = () =>{
             const status = response.status;
     
             if (status === 200) {
+                //We are going to store, user data into the redux store
+                //we need to access redux state in this component
+                
                 // alert(result + " Login successful ")
+                
+
+                const userData = {
+                    "id": result.id,
+                    "username": result.userName,
+                    "name": result.name,
+                    "email": result.email,
+                    "loginStatus": 2,
+                    "token": result.jwtToken,
+                }
+                //This is to store data in redux store, user section
+                dispatch(setUser(userData));
                 console.log(result)
                 // Store data in sessionStorage
                 sessionStorage['id'] = result.id;
@@ -42,6 +67,8 @@ const Login = () =>{
                 sessionStorage['email'] = result.email;
                 sessionStorage['loginStatus'] = 2;
                 sessionStorage['token'] = result.jwtToken; // Assuming token is sent
+
+
     
                 // alert('Login successful!');
                 navigate('/') // Uncomment if navigation is required

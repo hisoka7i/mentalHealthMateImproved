@@ -6,6 +6,8 @@ import ErrorPage from './pages/ErrorPage';
 import Login from './pages/userpages/Login';
 import Register from "./pages//userpages/Register";
 import MedicalHistory from "./pages/MedicalHistory";
+import { store, persistor } from './pages/store/ReduxStore';  // Import the store and persistor
+import { PersistGate } from 'redux-persist/integration/react';
 import Choice from "./pages/userpages/Choice";
 import DoctorHome from "./pages/doctorpages/DoctorHome";
 import DoctorLogin from "./pages/doctorpages/DoctorLogin"
@@ -20,7 +22,7 @@ import BookAppointment from "./pages/doctorpages/BookAppointment";
 import UserHome from "./pages/userpages/UserHome"
 import Question from "./pages/userpages/Question";
 import SiteReport from "./pages/SiteReport";
-
+import { Provider } from "react-redux";
 
 const AuthorizeDoctor=()=>{
   const loginStatus = sessionStorage['loginStatus'];
@@ -111,6 +113,8 @@ const App = () => {
  
   return (
     <>
+    <Provider store={store} >
+      <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
     <BrowserRouter>
     <Routes>
       {/* <Route path="/" element={} /> */}
@@ -133,6 +137,8 @@ const App = () => {
 
     </Routes>
     </BrowserRouter>
+    </PersistGate>
+    </Provider>
     </>
   );
 };
