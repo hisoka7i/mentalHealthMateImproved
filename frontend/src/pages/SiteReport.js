@@ -5,6 +5,7 @@ import './styles/Tables.css';
 import {URL} from '../config';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
+import { useSelector } from 'react-redux';
 
 const SiteReport = () => {
     const [patient,
@@ -12,12 +13,23 @@ const SiteReport = () => {
     const [chartData,
         setCharData] = useState([]); // State for chart data
     //   const [medHis,setMedHis] = useState([]);
+    const user = useSelector(state => state.user);
+    const token = user.token;
 
     function PatientData() {
         var id = sessionStorage['id']
+        // alert(token);
         return axios
-            .get(`${URL}/question/sitereport/${id}`)
-            .then((response) => response.data);
+            .get(`${URL}/question/sitereport/${id}`,{},{
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                alert("Response status :>" + response.status);
+                // alert("Response data")
+                // response.data
+            });
     }
     var COLORS;
 

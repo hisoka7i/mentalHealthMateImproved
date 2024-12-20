@@ -6,6 +6,7 @@ import '../styles/Home.css';
 import NavBar from '../../components/NavBar';
 import axios from 'axios';
 import { URL } from '../../config';
+import { useSelector } from 'react-redux';
 // import Choice from '../Choice';
 const Question = () => {
     const navigate = useNavigate();
@@ -16,6 +17,8 @@ const Question = () => {
     var autism = "";
     var ptsd = "";
     var hyperActivity = "";
+    const user = useSelector(state => state.user);
+    const token = user.token;
 
 // private int siteGenRepId;,private int anxity;, private int hyperActivity;, private int schizophrenia;
 // private int ocd;,private int autism;, private int stress;, private int ptsd;, private int parenoia;
@@ -32,7 +35,13 @@ const Question = () => {
             "parenoia": 3
         }
         var id = sessionStorage['id']
-        axios.post(`${URL}/question/${id}`,body).then((response)=>{
+        axios.post(`${URL}/question/${id}`,body,
+            {
+                headers:{
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        ).then((response)=>{
             const status = response.status
             if(status==200){
                 navigate("/userSiteReport")

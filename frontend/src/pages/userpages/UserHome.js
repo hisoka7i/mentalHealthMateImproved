@@ -22,7 +22,7 @@ const UserHome = () => {
     const user = useSelector(state => state.user);
     const token = user.token;
     function updateAllergy() {
-        console.log(id)
+        alert(token);
         axios.patch(`${URL}/user/updateAllergies/${id}/${allergy}`,
             {}, // Empty request body, since PATCH requests usually need one
             {
