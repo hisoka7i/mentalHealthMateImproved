@@ -1,7 +1,9 @@
 package com.demo.mhm.controller;
 
+import org.apache.hc.core5.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,14 +20,16 @@ public class QuestionsController {
 	@Autowired
 	QuestionServiceI qsi;
 	@PostMapping("/question/{id}")
-	public ResponseEntity<?> siteReportAnswers(@PathVariable("id") int id,@RequestBody SiteGeneratedReport sgr) {
-		return ResponseEntity.ok(qsi.saveAnswer(id,sgr));	
+	public ResponseEntity<?> siteReportAnswers(@PathVariable("id") int id,@RequestBody SiteGeneratedReport sgr, Authentication authencation) {
+		if(authencation.isAuthenticated())
+			return ResponseEntity.ok(qsi.saveAnswer(id,sgr));	
+		return ResponseEntity.status(HttpStatus.SC_FORBIDDEN).body(null);
 	}
 	@GetMapping("/question/sitereport/{id}")
-	public ResponseEntity<?> getSiteGeneratedReport(@PathVariable("id") int id) {
+	public ResponseEntity<?> getSiteGeneratedReport(@PathVariable("id") int id, Authentication authentication) {
 		//return ResponseUtil.success(qsi.generateReport());
-		return ResponseEntity.ok(qsi.generateReport(id));
+		if(authentication.isAuthenticated())
+			return ResponseEntity.ok(qsi.generateReport(id));
+		return ResponseEntity.status(HttpStatus.SC_FORBIDDEN).body(null);
 	}
-	
-	
 }
