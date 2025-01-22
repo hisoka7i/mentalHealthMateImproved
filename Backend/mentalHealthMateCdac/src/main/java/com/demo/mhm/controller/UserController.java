@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demo.mhm.dto.MedicalHistoryDTO;
 import com.demo.mhm.dto.SentUserDetailsDTO;
 import com.demo.mhm.dto.UserCredentialDTO;
-import com.demo.mhm.jwt_utils.JwtUtils;
 import com.demo.mhm.model.Users;
 import com.demo.mhm.service.CustomUserDetails;
 import com.demo.mhm.service.UserServiceI;
+import com.demo.mhm.utils.JwtUtils;
 
 import jakarta.validation.Valid;
 

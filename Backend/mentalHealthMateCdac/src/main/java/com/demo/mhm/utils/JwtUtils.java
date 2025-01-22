@@ -1,4 +1,4 @@
-package com.demo.mhm.jwt_utils;
+package com.demo.mhm.utils;
 
 import java.util.Date;
 

@@ -14,6 +14,9 @@ public class SpringBootRestWebServiceApplication {
 	public static void main(String[] args) {
 			SpringApplication.run(SpringBootRestWebServiceApplication.class, args);	
 			System.out.println("------------------");
+			// BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			// System.out.println(encoder.encode("1234"));
+			// System.out.println("------------------"); 
 	}
 
 	@Bean
