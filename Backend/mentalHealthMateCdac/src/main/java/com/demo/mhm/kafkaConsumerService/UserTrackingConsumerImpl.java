@@ -13,7 +13,8 @@ public class UserTrackingConsumerImpl implements UserTrackingConsumer{
     public void consumeUserTracking(UserTrackingDTO userData) {
         // TODO Auto-generated method stub
         // throw new UnsupportedOperationException("Unimplemented method 'consumeUserTracking'");
-        System.out.println("UserTrackingData"+userData);
+        System.out.println();
+        System.out.println("UserTrackingData_________----->"+userData.toString());
     }
     
 }

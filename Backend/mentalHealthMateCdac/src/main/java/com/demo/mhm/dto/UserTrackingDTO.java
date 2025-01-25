@@ -39,4 +39,9 @@ public class UserTrackingDTO {
     public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
+    @Override
+    public String toString() {
+        return "UserTrackingDTO [uname=" + uname + ", userIncomingtime=" + userIncomingtime + ", url=" + url
+                + ", userAgent=" + userAgent + ", ipAddress=" + ipAddress + "]";
+    }
 }

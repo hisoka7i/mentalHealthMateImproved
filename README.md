@@ -7,9 +7,9 @@ I am trying to implement some new things into it.
    3b. Cache from DB
 4. Convert it into Event Driven(Implement kafka)
 5. Apache kafka implementation
-   5.0.1: Implementing simple producer and consumer.
+   5.0.1: Implementing simple producer and consumer.(Completed, front_end implementation is missing but backend is completed, It is event driven.)
     I want landing on home a page as a event which which afterwards will tell if user logged in or not.
-   5a. User activity tracker. (Mood analysis can also be implemented)
+   5a. User activity tracker(Done). (Mood analysis can also be implemented)
    5b. Chatbot responses.
    5c. Notifications.
 6. Implement design patterns.

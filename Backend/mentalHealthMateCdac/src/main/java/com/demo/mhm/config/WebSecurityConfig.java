@@ -40,7 +40,8 @@ public class WebSecurityConfig {
         		.requestMatchers(
                 AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/user/login"),
                 AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/doctor/register"),
-                AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/doctor/login")
+                AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/doctor/login"),
+                AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/tracking/current")
                 ,AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/user/register")
                 ).permitAll()
         		.anyRequest().authenticated())

@@ -3,6 +3,7 @@ package com.demo.mhm.kafkaController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +17,18 @@ import com.demo.mhm.dto.UserTrackingDTO;
  * Keep track of every click made by him.
 */
 @RestController
+@RequestMapping("/tracking")
 public class UserTracking {
+    /*
+     * This should not have jwtToken for tracing
+    */
     @Autowired
     private com.demo.mhm.kafkaProducerService.UserTracking userTrackingService;
-    @PostMapping("/")
+    @PostMapping("/current")
     public ResponseEntity<?> trackUser(@RequestBody UserTrackingDTO userData){
         if(userTrackingService.trackUser(userData)){
-            return ResponseEntity.ok("Success");
+            return ResponseEntity.ok("Data added to Consumer!");
         }
-        return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(null);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
