@@ -6,9 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,16 +25,13 @@ import com.demo.mhm.utils.JwtUtils;
 
 import jakarta.validation.Valid;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 
 @RequestMapping("/user")
 @RestController
 @CrossOrigin("http://localhost:3000")
 public class UserController {
-	
+	//$10$4WgvFoO77U0BM9H3oXAXfeRwZw8xSRlGc6ajAZiZhUCbGm1Qo5s5a
 	@Autowired
 	private UserServiceI serviceI;
 
