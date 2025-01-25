@@ -31,7 +31,7 @@ import jakarta.validation.Valid;
 @RestController
 @CrossOrigin("http://localhost:3000")
 public class UserController {
-	//$10$4WgvFoO77U0BM9H3oXAXfeRwZw8xSRlGc6ajAZiZhUCbGm1Qo5s5a
+	//$2a$10$4WgvFoO77U0BM9H3oXAXfeRwZw8xSRlGc6ajAZiZhUCbGm1Qo5s5a
 	@Autowired
 	private UserServiceI serviceI;
 
