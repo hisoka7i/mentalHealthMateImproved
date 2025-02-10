@@ -10,8 +10,9 @@ I am trying to implement some new things into it.
    5.0.1: Implementing simple producer and consumer.(Completed, front_end implementation is missing but backend is completed, It is event driven.)
     I want landing on home a page as a event which which afterwards will tell if user logged in or not.
    5a. User activity tracker(Done). (Mood analysis can also be implemented)
-   5b. Chatbot responses.
-   5c. Notifications.
+   5b. Chatbot responses.(Not gonna do)
+   5c. Notifications.(Can do, but there is nothing to send the notifications).
+   5d. Do something for acknowledgement, only once semantics and other kakfa configurations.
 6. Implement design patterns.
    6a. Singleton pattern: Authentication service and configuration manager.
    6b. Observer pattern: For user login or activity miss.
